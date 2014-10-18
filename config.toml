@@ -1,3 +1,12 @@
+
+# add ng to "/etc/hosts"
+# ... example:
+# ...
+# 127.0.1.1	ng
+# 127.0.1.1	ngtutorial.com
+# ...
+# for windows:
+# %system32%/driver/etc/hosts
 servername = "ng"
 port = "80"
 
@@ -12,10 +21,23 @@ port = "80"
 # keyfile = "./priv/key.pem"
 #
 
+[[route]]
+pattern = "/(api|guide|misc|tutorial|error)"
+path =  "/d/dev/js/angular-1.3.0/docs/index.html"
+filealias = true
+priority = 20
 
 [[route]]
-# angularjs docs is found at "/d/dev/js/angular-1.3.0/docs"
-path  = "/d/dev/js"
-pattern = "/angular-1.3.0/"
+pattern = "/angular.*js"
+path =  "/d/dev/js/angular-1.3.0/"
+priority = 10
+
+[[route]]
+pattern = "/" 
+path =  "/d/dev/js/angular-1.3.0/docs"
+priority = 0
 
 
+# 
+# ngweb -genconfig > config.toml
+#
